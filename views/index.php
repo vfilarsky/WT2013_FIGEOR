@@ -27,7 +27,8 @@
                         <a href="/projects/view/3">Konštrukcia prekladačov</a><br>
                         <a href="/projects/view/3">Administrácia databáz</a>
                         <br><br>
-                        <a href="/projects/admin">-> Administrácia</a>
+                        <a href="/index/profil">-> Môj profil</a><br>
+                        <a href="/projects/admin">-> Spravovať projekty</a>
                     </div>
                 </aside>
                 <section id="rightPanel">

@@ -10,7 +10,7 @@ class System {
     const TABLE_PROJECTS = 'projects';
     const TABLE_USERS = 'users';
     const TABLE_FILES = 'files';
-    const TABLE_TASKSK = 'tasks';
+    const TABLE_TASKS = 'tasks';
     const TABLE_REMINDERS = 'reminders';
 
     private $DBH;
