@@ -22,7 +22,7 @@ class Project implements IModel {
         if ($Q->rowCount()) {
             $R = $Q->fetch();
             $this->id = $R['id_p'];
-            $this->user = $R['id_u'];
+            $this->user = new User($R['id_u']);
             $this->name = $R['name'];
             $this->description = $R['description'];
             $this->dateCreated = $R['dateCreated'];

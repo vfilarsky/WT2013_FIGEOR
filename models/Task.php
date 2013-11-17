@@ -28,8 +28,8 @@ class Task implements IModel {
             $R = $Q->fetch();
             $this->id = $R['id_t'];
             $this->project = new Project($R['id_p']);
-            $this->parentTask = $R['parentTask'];
-            $this->user = $R['id_u'];
+            $this->parentTask = is_numeric($R['parentTask']) ? new Task($R['parentTask']) : null;
+            $this->user = new User($R['id_u']);
             $this->name = $R['name'];
             $this->description = $R['description'];
             $this->dateCreated = $R['dateCreated'];
