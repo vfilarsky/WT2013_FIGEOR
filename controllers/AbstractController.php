@@ -16,5 +16,32 @@ class AbstractController {
         return $this->{$methodName}();
     }
 
+    public static function parseURL() {
+        $action = '';
+        $request = $_SERVER['REQUEST_URI'];
+        $keys = explode('/', $request, 4);
+        // zacina sa / takze na indexe 0 je prazdny string
+        // 1 - controller
+        // 2 - akcia
+        // 3 - zatial zvysok parametre (GET)
+        $controller = $keys[1];
+        if ($keys[2] !== null) {
+            $action = $keys[2];
+        }
+        $params = explode('/', preg_replace('/\?.*/', '', $keys[3])); // vyhodi vsetko ?... cize "stary get"
+
+        if (count($params) >= 2) {
+            unset($_GET);
+            for ($i = 0; $i < count($params); $i++) {
+                $_GET[$params[$i++]] = $params[$i];
+            }
+        } else {
+            unset($_GET);
+            $_GET['id'] = $params[0];
+        }
+
+        return array('controller' => $controller, 'action' => $action);
+    }
+
 }
 
