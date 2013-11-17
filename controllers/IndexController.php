@@ -12,8 +12,10 @@ class IndexController extends AbstractController {
 
     protected function login() {
         $view = new View('index/login.php');
-        $view->title = 'Hello World!';
-        return $view;
+        $ret = array();
+        $ret['title'] = 'Prihlasovací formulár';
+        $ret['main'] = $view->renderToString();
+        return $ret;
     }
 
 }

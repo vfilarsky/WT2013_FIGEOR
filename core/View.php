@@ -16,11 +16,16 @@ class View {
     }
 
     public function renderToString() {
+        $ret = '';
         $fname = 'views/';
         $fname .= $this->template;
         if (file_exists($fname)) {
+            ob_start();
             include $fname;
+            $ret .= ob_get_contents();
+            ob_end_clean();
         }
+        return $ret;
     }
 
 }

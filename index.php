@@ -6,15 +6,19 @@ require_once 'init.php';
 
 $parsedUrl = @(Controller\AbstractController::parseURL());
 
-$controllerClass = __NAMESPACE__ . '\Controller\\' . ucfirst($parsedUrl['controller']) . 'Controller';
+$controllerName = strlen($parsedUrl['controller']) ? $parsedUrl['controller'] : 'index';
+$controllerClass = __NAMESPACE__ . '\Controller\\' . ucfirst($controllerName) . 'Controller';
 $controller = new $controllerClass;
 $action = $parsedUrl['action'];
 
 $response = $controller->doAction($action);
-$ret = '';
-$ret .= $response->renderToString();
 
-$content = ob_get_contents();
+$layout = new \Figeor\Core\View('index.php');
+$layout->title = $response['title'];
+$layout->mainContent = $response['main'];
+
+$content = $layout->renderToString();
+
 ob_end_clean();
 echo $content;
 

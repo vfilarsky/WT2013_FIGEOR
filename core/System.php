@@ -7,6 +7,12 @@ use \PDOException;
 
 class System {
 
+    const TABLE_PROJECTS = 'projects';
+    const TABLE_USERS = 'users';
+    const TABLE_FILES = 'files';
+    const TABLE_TASKSK = 'tasks';
+    const TABLE_REMINDERS = 'reminders';
+
     private $DBH;
     private static $instance = null;
 
@@ -19,6 +25,9 @@ class System {
         ;
     }
 
+    /**
+     * @return System instancia
+     */
     public static function getInstance() {
         if (self::$instance === null) {
             self::$instance = new self;
